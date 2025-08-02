@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Profile | TestZen - Smart Online Exam Platform</title>
+  <link rel="icon" href="https://iili.io/FvlNBgp.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background: #f4f7fb;
+      overflow-x: hidden;
+    }
+
+    /* --- HEADER STYLE (Same as resultlist.html) --- */
+    .navbar {
+      width: 100%;
+      background: linear-gradient(90deg, #4a90e2, #357ABD);
+      color: white;
+      padding: 18px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 999;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+
+    .navbar .logo {
+      display: flex;
+      align-items: center;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .navbar .logo img {
+      width: 32px;
+      height: 32px;
+      margin-right: 10px;
+    }
+
+    .navbar .username {
+      font-size: 17px;
+      font-weight: 500;
+    }
+
+    /* --- MAIN CONTENT --- */
+    .container {
+      max-width: 600px;
+      margin: 110px auto 30px;
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      color: #357ABD;
+      margin-bottom: 15px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .btn {
+      background: #4a90e2;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 14px;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #357ABD;
+    }
+
+    @media (max-width: 600px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .navbar .username {
+        margin-top: 5px;
+        font-size: 15px;
+        text-align: left;
+      }
+
+      .btn-group {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="logo">
+      <img src="https://iili.io/FvlNBgp.png" alt="Logo">
+      TestZen
+    </div>
+    <div class="username">Hi, {{ request.user.first_name }}</div>
+  </div>
+
+  <div class="container">
+    <h2>Edit Profile</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ u_form.as_p }}
+      {{ p_form.as_p }}
+      <div class="btn-group">
+        <button type="submit" class="btn">Save Changes</button>
+        <a href="{% url 'dashboard' %}" class="btn">Back to Dashboard</a>
+      </div>
+    </form>
+  </div>
+
+</body>
+</html>

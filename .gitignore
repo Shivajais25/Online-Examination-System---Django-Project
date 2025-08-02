@@ -1,0 +1,21 @@
+# Ignore virtual environment
+../project/
+
+# Byte-compiled files
+__pycache__/
+*.py[cod]
+
+# SQLite DB
+db.sqlite3
+
+# Django migrations
+*/migrations/
+*.pyc
+
+# IDE and OS
+.vscode/
+.idea/
+.DS_Store
+
+# Env
+.env

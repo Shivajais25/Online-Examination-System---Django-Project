@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Us | TestZen - Smart Online Exam Platform</title>
+  <link rel="icon" href="https://iili.io/FvlNBgp.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #f4f7fb, #dfeeff);
+      padding-top: 55px;
+      padding-bottom: 60px;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: linear-gradient(90deg, #4a90e2, #357ABD);
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .navbar h1 {
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .navbar img {
+      width: 36px;
+      height: 36px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 30px 20px;
+    }
+
+    .container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #2b5876;
+    }
+
+    form {
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    label {
+      font-weight: 500;
+      display: block;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px 15px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .submit-btn {
+      background-color: #4a90e2;
+      color: white;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      background: #357ABD;
+    }
+    .back-btn {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+        width: 100%;
+}
+
+
+    .back-btn a {
+      background-color: #4a90e2;
+      color: #fff;
+      padding: 10px 25px;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+    }
+
+    .back-btn a:hover {
+      background: #357ABD;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: #4a90e2;
+      color: white;
+      text-align: center;
+      padding: 12px 0;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        padding: 12px;
+        gap: 5px;
+      }
+
+      .navbar h1 {
+        font-size: 18px;
+      }
+
+      .navbar img {
+        width: 30px;
+        height: 30px;
+      }
+
+      .container {
+        padding: 20px 15px;
+      }
+
+      input, textarea {
+        font-size: 14px;
+      }
+
+      .submit-btn {
+        font-size: 15px;
+        padding: 8px 20px;
+      }
+
+      footer {
+        font-size: 13px;
+        padding: 10px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <h1><img src="https://iili.io/FvlNBgp.png" alt="logo"> TestZen</h1>
+  </div>
+
+  <div class="container">
+    <h2>Contact Us</h2>
+    <form method="POST">
+      {% csrf_token %}
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name" required>
+
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" required>
+
+      <label for="phn">Contact</label>
+      <input type="text" name="phn" id="phn" required>
+
+
+      <label for="message">Message</label>
+      <textarea name="message" id="message" required></textarea>
+
+      <button type="submit" class="submit-btn">Send Message</button>
+    </form>
+    <div class="back-btn">
+        <a href="{% url 'dashboard' %}">Back to Dashboard</a>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 TestZen. All rights reserved.
+  </footer>
+
+</body>
+</html>

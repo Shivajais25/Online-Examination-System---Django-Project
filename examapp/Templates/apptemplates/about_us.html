@@ -1,0 +1,175 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About Us | TestZen - Smart Online Exam Platform</title>
+  <link rel="icon" href="https://iili.io/FvlNBgp.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: linear-gradient(to bottom right, #f4f7fb, #dfeeff);
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(90deg, #4a90e2, #357ABD);
+      color: white;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 1000;
+    }
+
+    .navbar h1 {
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar img {
+      width: 32px;
+      margin-right: 10px;
+    }
+
+    .user-info {
+      font-size: 15px;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #4a90e2;
+      color: white;
+      text-align: center;
+      padding: 12px 0;
+      font-size: 14px;
+    }
+
+    .main-content {
+      margin-top: 65px; /* height of navbar */
+      margin-bottom: 60px; /* height of footer */
+      padding: 30px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: calc(100vh - 125px); /* to ensure scroll only in content */
+      overflow-y: auto;
+    }
+
+    .about-container {
+      background: #fff;
+      padding: 30px;
+      max-width: 800px;
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+      animation: fadeIn 0.5s ease;
+    }
+
+    .about-container h2 {
+      text-align: center;
+      color: #34495e;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    .about-container p {
+      color: #555;
+      line-height: 1.7;
+      font-size: 15.5px;
+      text-align: justify;
+    }
+
+    .about-container .back-btn {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .about-container a {
+      background: #4a90e2;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 14px;
+      transition: background 0.3s ease;
+    }
+
+    .about-container a:hover {
+      background: #357ABD;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      .navbar h1 {
+        font-size: 18px;
+      }
+
+      .user-info {
+        font-size: 13px;
+      }
+
+      .about-container {
+        padding: 20px;
+      }
+
+      .about-container h2 {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <h1><img src="https://iili.io/FvlNBgp.png" alt="icon"> TestZen</h1>
+    <div class="user-info">
+      Hi, {{ request.user.username }}
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="about-container">
+      <h2>About TestZen</h2>
+      <p>
+        TestZen is a smart online examination platform designed to help students enhance their learning through interactive and intelligent assessments. Whether you're preparing for school exams, entrance tests, or just want to practice a subject, TestZen provides a clean and user-friendly interface to simulate real-time test environments.
+        <br><br>
+        Our goal is to make exam-taking less stressful and more insightful. With personalized dashboards, performance tracking, subject-wise categorization, and instant results — students get a clear understanding of their strengths and areas to improve.
+        <br><br>
+        Built using modern web technologies, TestZen ensures a smooth and secure experience for every student. We believe that testing knowledge should be motivating, not intimidating. Our platform empowers learners to challenge themselves in a flexible and supportive way.
+        <br><br>
+        We’re constantly improving based on feedback and educational needs. Whether you're a student, teacher, or institution — TestZen is built for you.
+      </p>
+      <div class="back-btn">
+        <a href="{% url 'dashboard' %}">Back to Dashboard</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 TestZen. All rights reserved.
+  </footer>
+
+</body>
+</html>
