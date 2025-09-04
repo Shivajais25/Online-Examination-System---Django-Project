@@ -32,7 +32,7 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://65f3752795aa.ngrok-free.app'       #also change this
+   
 ]
 
 
