@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-y&)e_4gato11g%m9e7vgjmk3h8)xb8^wj_chr6=j%iz%b-3_p3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.onrender.com']   #for hosting in render[cloud hosting platform]
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.onrender.com']   #for hosting in render[cloud hosting platform]
 
 # settings.py
 STATIC_ROOT = BASE_DIR / "staticfiles"
@@ -68,7 +68,7 @@ ROOT_URLCONF = 'OnlineExam.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR, 'Templates'],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

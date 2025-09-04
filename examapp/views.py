@@ -10,7 +10,7 @@ from .models import UserProfile, Result
 # Create your views here.
  #Here is the code which is default page of our website
 def home(request):
-    return render(request, "apptemplates/Home.html")
+    return render(request, "examapp/Home.html")
 
 #register page view 
 def register(request):                 
@@ -31,7 +31,7 @@ def register(request):
             usr.save()                 #this is used to save data in DB
             messages.info(request, "Successfully Registered With Us To Continue Login Here")
             return redirect("/login/")
-    return render(request, "apptemplates/Register.html")
+    return render(request, "examapp/Register.html")
 
     #.................
 
@@ -53,7 +53,7 @@ def login(request):
             auth_login(request, user)
             return redirect("/dashboard/")        #home page ki location dena hoga
 
-    return render(request, "apptemplates/Login.html")
+    return render(request, "examapp/Login.html")
 
 #logout page view
 def logout(request):
@@ -63,12 +63,12 @@ def logout(request):
 
 #dashboard page view``
 def dashboard(request):
-    return render(request, "apptemplates/Dashboard.html")
+    return render(request, "examapp/Dashboard.html")
 
 #below is the subject_list view which shows the list of subjects whose test is available
 def exam(request):
     subjects=Subject.objects.all()
-    return render(request, "apptemplates/Subject_list.html", {'subjects': subjects})
+    return render(request, "examapp/Subject_list.html", {'subjects': subjects})
 
 def start_exam(request, subject_id):
     subject = get_object_or_404(Subject, id=subject_id)
@@ -84,7 +84,7 @@ def start_exam(request, subject_id):
         request.session['answers'] = answers
         return redirect('submit_exam', subject_id=subject.id)
 
-    return render(request, 'apptemplates/start_exam.html', {
+    return render(request, 'examapp/start_exam.html', {
         'subject': subject,
         'questions': questions
     })
@@ -126,7 +126,7 @@ def submit_exam(request, subject_id):
             total_questions=total
         )
 
-    return render(request, 'apptemplates/result.html', {
+    return render(request, 'examapp/result.html', {
         'subject': subject,
         'score': score,
         'total': total,
@@ -155,19 +155,19 @@ def profile_view(request):
         u_form = UserForm(instance=request.user)
         p_form = ProfileForm(instance=profile)
     
-    return render(request, 'apptemplates/profile.html', {'u_form': u_form, 'p_form': p_form})
+    return render(request, 'examapp/profile.html', {'u_form': u_form, 'p_form': p_form})
 
 
 #below is the view of about_us url
 
 def about_us(request):
-    return render(request, 'apptemplates/about_us.html')
+    return render(request, 'examapp/about_us.html')
 
 #below is the view of result url 
 @login_required
 def result_list(request):
     user_results = Result.objects.filter(user=request.user).order_by('date')  # latest first
-    return render(request, 'apptemplates/result_list.html', {'results': user_results})
+    return render(request, 'examapp/result_list.html', {'results': user_results})
 
 #below is the view of contact url
 def contact(request):
@@ -183,4 +183,4 @@ def contact(request):
             # Sirf thank you message dikhana hai
             success = True
 
-    return render(request, 'apptemplates/contact.html', {'success': success})
+    return render(request, 'examapp/contact.html', {'success': success})
