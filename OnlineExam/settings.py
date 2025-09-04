@@ -25,12 +25,23 @@ SECRET_KEY = 'django-insecure-y&)e_4gato11g%m9e7vgjmk3h8)xb8^wj_chr6=j%iz%b-3_p3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.onrender.com']   #for hosting in render[cloud hosting platform]
+
+# settings.py
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://65f3752795aa.ngrok-free.app'       #also change this
+]
+
+
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'unfold',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -48,6 +59,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    
 ]
 
 ROOT_URLCONF = 'OnlineExam.urls'

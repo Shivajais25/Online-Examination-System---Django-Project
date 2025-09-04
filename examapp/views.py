@@ -1,11 +1,11 @@
 from django.core.paginator import Paginator     #here we import library to access pagination in test module
-from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from examapp.models import Candidate ,Subject , Question     #model/table name
 from django.contrib import messages
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login as auth_login, logout   #built-in authentication module
+from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout   #built-in authentication module
 from .forms import UserForm, ProfileForm
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required  #here we are importing decorators 
 from .models import UserProfile, Result
 # Create your views here.
  #Here is the code which is default page of our website
@@ -57,10 +57,11 @@ def login(request):
 
 #logout page view
 def logout(request):
+    auth_logout(request)
     return redirect('/login/')
 
 
-#dashboard page view
+#dashboard page view``
 def dashboard(request):
     return render(request, "apptemplates/Dashboard.html")
 
@@ -135,7 +136,7 @@ def submit_exam(request, subject_id):
 
 
 #to make profile module responsive
-@login_required
+@login_required     #to access profile module login is required
 def profile_view(request):
     # ✔ Create user profile if it doesn't exist
     try:

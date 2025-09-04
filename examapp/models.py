@@ -14,6 +14,8 @@ def __str__(self):
 
 class Subject(models.Model):
     name=models.CharField(max_length=100)
+    def __str__(self):
+        return self.name
 
 #below is the model of question which is used to store questions
 
@@ -25,6 +27,8 @@ class Question(models.Model):
     option3 = models.CharField(max_length=200)
     option4 = models.CharField(max_length=200)
     correct_option = models.CharField(max_length=200)
+    def __str__(self):
+        return self.text
 
 #below is the model of result which is used to store result of user 
 
@@ -34,7 +38,9 @@ class Result(models.Model):
     score = models.IntegerField()
     total_questions = models.IntegerField()
     date = models.DateTimeField(auto_now_add=True)
-
+    def __str__(self):
+        return "Name - "+self.user.username+" , "+"Subject - "+self.subject.name+" , "+ "Result - "+str(self.score)+"/"+str(self.total_questions)
+    
 
 #to make profile module responsive we have to make models to store user details
 class UserProfile(models.Model):
